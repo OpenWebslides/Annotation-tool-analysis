@@ -1,0 +1,5 @@
+{
+    "connString": "mongodb://webslides-01-mongodb:27017"
+    ,"dbNaam": "BachelorproefDB"
+    ,"collNaam": "Annotaties"
+}

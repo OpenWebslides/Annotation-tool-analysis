@@ -1,0 +1,7 @@
+webslides-01-compose.log
+
+**/.idea/
+**/nbproject/
+
+/Servlets/AnnotationToolServer/build/
+/Servlets/AnnotationToolServer/web/WebApplicationApp/nbproject/private/

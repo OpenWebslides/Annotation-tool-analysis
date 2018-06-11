@@ -1,0 +1,88 @@
+key;nederlands;english
+##Deze eerst lijn is verplicht!
+
+##Commentaar wordt geschreven op een nieuwe lijn verafgegaan door '##'
+##Lege lijnen worden genegeerd
+
+##NAVIGATIE
+##Tooltips op navigatieknoppen
+ttp_nav_overview;Open de overviewpagina;Open overview page
+ttp_nav_previous;Keer terug;Return to previous page
+ttp_nav_add;Voeg nieuwe annotatie toe;Add new annotation to current slide
+ttp_nav_refresh;Herlaad annotaties;Reload annotations
+ttp_nav_close;Sluit sidebar;Close sidebar
+ttp_nav_alert;Nieuw voorbije week;New past week
+text_nav_boxClose;Klik om dit venster te sluiten;Click to close this window
+
+##DEFAULTVIEW
+##Text in de de defaultview
+txt_defaultview_allannotations;Alle annotaties;All annotations
+
+##OVERVIEW
+##Tooltips in overview
+ttp_overview_search;Zoek op naam, inhoud, titel of tags;Search on name, content, titles or tags
+ttp_overview_includereactions;Bepaalt of er ook in reacties wordt gezocht;Determines whether reactions wil be searched as well
+ttp_overview_order;Orden annotaties op datum(NEW), op likes(TOP), op reacties(HOT) of op dia's(SLIDE);Order annotations on date (NEW), on likes(TOP), on reactions(HOT) or on slides(SLIDES)
+ttp_overview_favorite;Bekijk uw favorieten;View your favorites
+txt_overview_no_results;Geen items gevonden;No items matched your search
+
+##Text in overview
+txt_overview_searchplaceholder;Zoek hier...;Search here...
+txt_overview_reactions_on;Inclusief reacties;Includes reactions
+txt_overview_reactions_off;Inclusief reacties;Includes reactions
+txt_overview_jumptoslide;Ga naar slide;Jump to slide
+
+##ANNOTATIES-REACTIES
+##Tooltips op annotaties en reacties
+ttp_annotation_upvote;Upvote;Upvote
+ttp_annotation_downvote;Downvote;Downvote
+ttp_annotation_send;Verstuur;Send
+ttp_annotation_history;Geschiedenis;History
+ttp_annotation_minimize;Verklein;Minimize
+ttp_annotation_maximize;Vergroot;Maximize
+ttp_annotation_favorite;Voeg toe aan favorieten;Add to favorites
+ttp_annotation_edit;Bewerk;Edit
+ttp_annotation_delete;Verwijder;Delete
+ttp_annotation_removed;Dit werd verwijderd door gebruiker of professor;This has been deleted by user or professor
+ttp_annotation_tag;Klik hier om soortgelijke annotaties te vinden;Click here to find similar annotations
+ttp_annotation_reactioncounter;Aantal reacties;Number of reactions
+ttp_reaction_postreaction;Plaats reactie;Post reaction
+
+##Errors
+err_reaction_requestfailed;Request mislukt;Request failed
+err_annotation_nothingtoshow;Geen annotaties om weer te geven;No annotations to show
+err_annotation_deletefailed;Verwijderen mislukt;Delete failed
+err_annotation_votefailed;Vote is mislukt;Vote failed
+err_annotation_favoritefailed;Favorite is mislukt;Favorite failed
+
+
+##FORMULIER
+##Tooltips in formulier
+ttp_form_tag;Klik hier om deze tag te verwijderen;Click here to delete this tag
+ttp_from_category_visibility;Kies een gepaste categorie en zichtbaarheid;Choose the appropriate category and visibility
+
+##Text in formulier
+txt_form_titleplaceholder;Geef hier een titel op;Give a title here
+txt_form_contentplaceholder;Schrijf hier jouw annotatie;Write your annotation here
+txt_form_addtagplaceholder;Kies een nieuwe/bestaande tag;Choose taken and/or new tags
+
+##Buttons in formulier
+bttn_form_addtag;Voeg toe; Add tag
+bttn_form_submit;Stuur door;Submit
+
+##Errors in formulier
+err_form_submitfail;Doorsturen is mislukt;Submit failed
+err_form_unvalidfields;Je moet op z'n minst een titel en inhoud opgeven;You have to at least fill in the comment box and title!
+
+##MANAGER
+##Prompt
+txt_manager_entername;Geef je naam op;Please enter your name
+
+##Alerts
+txt_manager_nothingnew;Niets nieuws deze week;Nothing new past week
+txt_manager_postedannoreact;plaatste een reactie of annotatie;posted an annotation or reaction
+
+##Errors in manager
+err_manager_failretrieveann;Fout bij ophalen annotaties;Failed to retrieve annotations
+
+

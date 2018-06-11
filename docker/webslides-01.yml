@@ -1,0 +1,12 @@
+version: "2"  # "3" if beta release (swarm mode)
+services:
+  webslides-01-glassfish:
+    build: 
+      context: webslides-01-glassfish/
+      dockerfile: Dockerfile
+    ports:
+      - "9003:8080"
+  webslides-01-mongodb:
+    build: 
+      context: webslides-01-mongodb/
+      dockerfile: Dockerfile

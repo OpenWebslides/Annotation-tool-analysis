@@ -1,0 +1,4 @@
+npm install --save-dev jest
+
+source: https://facebook.github.io/jest/docs/en/getting-started.html
+        https://babeljs.io/docs/setup/#installation

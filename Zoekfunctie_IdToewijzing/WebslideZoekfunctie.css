@@ -1,0 +1,18 @@
+.searched_text {
+    background-color: #ff47ba;
+
+}
+
+#searchBar {
+    background-color: #79757c;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#search {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    font-size: 2em;
+}

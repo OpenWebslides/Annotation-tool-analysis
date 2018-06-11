@@ -1,0 +1,970 @@
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Tekst*/
+#AnnotationTool_mySidebar * {
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-size: 18px;
+    /*font-stretch: normal;*/
+    /*font-style: normal;*/
+    /*font-weight: 300;*/
+    line-height: 120%;
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*opmaak sidebar*/
+#AnnotationTool_closeAnnotationsBtn{
+    display: inline-block;
+}
+
+#AnnotationTool_openAnnotationsBtn{
+    background-image: linear-gradient(to right, #054A91, #81A4CD);
+    margin: 0;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 15px 0 0 15px;
+    box-shadow: 0px 2px 20px #8d8d8d;
+    border: none;
+}
+#AnnotationTool_openAnnotationsBtn i{
+    color: white;
+}
+
+#AnnotationTool_menuTitle{
+    display: inline-block;
+}
+
+#AnnotationTool_mySidebar{
+    overflow: visible;
+    /*background-color: lightgray;*/
+    background-color: #f7f9fc;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
+    padding-left: 15px; /*NODIG TER COMPENSATIE VAN DE SCHUIFBAR*/
+    display:none;
+    right:0;
+}
+
+.AnnotationTool_div_padding {
+    /*border-color: #32ff19;
+    border-width: thin;
+    border-style: dashed;*/
+    padding: 10px;
+}
+
+#AnnotationTool_main {
+    position: fixed;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.AnnotationTool_above {
+    position: fixed;
+    top: 20%;
+    right: 0;
+    z-index: 10;
+    margin: 0;
+    padding: 0;
+    clear: right;
+}
+
+.ui-resizable-w {
+    left: 0;
+    width: 15px; /*VERGEET DE PADDING NIET BIJ #mySidebar*/
+    background-image: linear-gradient(to right, #054A91, #81A4CD);
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*navigation*/
+.AnnotationTool_navBtn {
+    width:100%;
+    margin: auto;
+}
+
+
+#AnnotationTool_navDiv{
+    /*background: #81A4CD;*/
+    background: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 10px #8d8d8d;
+    margin-bottom: 10px;
+    /*margin-top: 20px;*/
+    /*margin-bottom: 20px;*/
+}
+
+#AnnotationTool_navDiv button {
+    background: #ffffff;
+    color: #000000;
+    font-size: 1.5em;
+    border: none;
+    width: 100%;
+    height: 1.5em;
+    padding: 0px;
+}
+
+#AnnotationTool_navDiv button:focus {
+    outline:none;
+}
+
+
+
+#AnnotationTool_navDiv td {
+    padding: 10px;
+}
+
+#AnnotationTool_navDiv i {
+    pointer-events: none;
+}
+
+#AnnotationTool_navDiv .material-icons {
+    padding-top: 0.2em;
+    font-size: 1.2em;
+}
+
+/*Width*/
+.AnnotationTool_w-sm {
+    width: 25%;
+}
+
+.AnnotationTool_w-me {
+    width: 50%;
+}
+
+.AnnotationTool_w-la {
+    width: 75%;
+}
+
+.AnnotationTool_w-full {
+    width:100%;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Tooltips*/
+.AnnotationTool_hasTooltip:hover > .AnnotationTool_tooltiptext {
+    transition-delay:1s;
+    visibility: visible;
+}
+
+.AnnotationTool_hasTooltip > .AnnotationTool_tooltiptext {
+    visibility: hidden;
+    color: #fff;
+    background-color: #282828;
+    border-radius: 6px;
+    position: absolute;
+
+    max-width: 150px;
+    width: auto;
+
+    padding: 5px 10px;
+    margin-top: 5px;
+    z-index: 10;
+}
+
+.AnnotationTool_hasTooltip > .AnnotationTool_tooltiptext-long {
+    max-width: 250px;
+}
+
+.AnnotationTool_hasTooltip > .AnnotationTool_tooltiptext-below {
+    margin-top: 20px;
+}
+
+.AnnotationTool_hasTooltip > .AnnotationTool_tooltiptext-sleft {
+    margin-left: -40px;
+}
+
+.AnnotationTool_hasTooltip > .AnnotationTool_tooltiptext-left {
+    margin-left: -85px;
+}
+
+.AnnotationTool_hasTooltip > .AnnotationTool_tooltiptext-bleft {
+    margin-left: -130px;
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*opmaak annotation*/
+.AnnotationTool_reactionText{
+    display: block;
+    box-sizing: border-box;
+    overflow: visible;
+    width: 100%;
+    float:left;
+    padding-left: 10px;
+    resize: vertical;   /*Can't be resized horizontally*/
+}
+.AnnotationTool_reactionButton{
+    box-sizing: border-box;
+    width:10%;
+    margin: 0;
+}
+
+.AnnotationTool_reactionBox{
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+}
+
+.AnnotationTool_annotation{
+    background-color: white;
+    box-sizing: border-box;
+    margin: 5px;
+    padding: 2%;
+    box-shadow: 0px 2px 4px #8d8d8d;
+    word-wrap: break-word;
+}
+
+.AnnotationTool_reactionsView{
+    box-sizing: border-box;
+    padding-left: 40px;
+    width: 100%;
+}
+
+.AnnotationTool_reactionCounter{
+    position: absolute;
+    right: 10px;
+    box-sizing: border-box;
+}
+
+.AnnotationTool_annotationCategory{
+    display: inline-block;
+    padding-left: 5px;
+    border-bottom: solid thin #b3b3b3;
+}
+
+.AnnotationTool_annotationTitle{
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+}
+
+.AnnotationTool_annotationContent{
+    box-sizing: border-box;
+    padding-left: 5%;
+    width: 100%;
+    background-color: white;
+}
+
+.AnnotationTool_reaction{
+    box-sizing: border-box;
+    width: 100%;
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.AnnotationTool_annotationUserName{
+    width: 50%;
+}
+
+.AnnotationTool_annotationContent{
+    padding: 0;
+    margin: 0;
+}
+
+.AnnotationTool_rating-container{
+    float: right;
+    width: 70px;
+    margin: 0;
+    padding: 0;
+}
+
+.AnnotationTool_upvote *{
+    float: left;
+    display: inline-block;
+}
+
+.AnnotationTool_downvote *{
+    float: left;
+    display: inline-block;
+}
+
+.AnnotationTool_upvote:hover,
+.AnnotationTool_downvote:hover,
+.AnnotationTool_btn_edit:hover,
+.AnnotationTool_btn_delete:hover
+{
+    cursor: pointer;
+}
+
+.AnnotationTool_btn_edit,
+.AnnotationTool_btn_delete{
+    color: black;
+}
+
+.AnnotationTool_annotationText{
+    margin-left: 5px;
+}
+
+.AnnotationTool_annotationTags{
+    display: flex;
+}
+
+.AnnotationTool_tag{
+    background-color: #e7e7e7;
+    border-radius: 2px;
+    margin: 1px;
+    text-align: center;
+    padding: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: inherit;
+    border: none;
+}
+
+
+.AnnotationTool_editDel-container{
+    /*border: solid 1px black;*/
+    background-color: white;
+    right: 20px;
+    /*position: absolute;*/
+    float: right;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+}
+
+.AnnotationTool_annotationUserName{
+    color: #1976d2;
+}
+.AnnotationTool_annotationUserNameProfessor{
+    color: green !important;
+}
+
+.AnnotationTool_resizer{
+    float: left;
+    cursor: pointer;
+}
+
+.AnnotationTool_favorite-container{
+    width: 10px;
+}
+
+.AnnotationTool_favorite{
+    width: 10%;
+    float: right;
+}
+.AnnotationTool_favoriteOverview {
+    color: #ffb300 !important;
+    top: 70px !important;
+    right: 100px !important;
+    left:80%;
+    cursor: pointer;
+}
+#AnnotationTool_favoriteOverviewPosition {
+     top: 70px !important;
+     right: 100px !important;
+}
+
+.AnnotationTool_upper-row{
+    position: relative;
+    display: flex;
+    border-bottom: solid thin #b3b3b3;
+}
+
+.material-icons{
+    display: inline-block;
+    color: #606060;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*alert*/
+/* The alert message box */
+.AnnotationTool_alert {
+    padding: 20px;
+    background-color: #f46717;
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* The close button */
+.AnnotationTool_alertclosebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.AnnotationTool_alertclosebtn:hover {
+    color: black;
+}
+
+.AnnotationTool_alertText {
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+#AnnotationTool_mySidebar p {
+    margin-top: 0.125em;
+    margin-bottom: 0.2em;
+    margin-left: 0;
+    margin-right: 0.2em;
+    padding: 0;
+    border: 0;
+    line-height: 120%;
+}
+
+
+.AnnotationTool_center_content {
+    display: block;
+}
+
+.AnnotationTool_div_scrollable {
+    overflow: auto;
+    height: 750px;
+}
+
+/*Tables*/
+.AnnotationTool_table_for_title {
+    padding: 10px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.AnnotationTool_td-sm {
+    width: 25%;
+}
+
+.AnnotationTool_td-me {
+    width: 50%;
+}
+
+.AnnotationTool_td-la {
+    width: 75%;
+}
+
+.AnnotationTool_tdOverview{
+    vertical-align: top;
+}
+
+/*Input*/
+input[type="text"] {
+    /*    display: inline;
+        float:left;*/
+    /*display: flex;*/
+}
+.AnnotationTool_paddingOverview{
+    padding: 3px;
+}
+.AnnotationTool_searchresult{ /*breedte van annotaties in overview, zie putResults in manager.js*/
+    width: 22vw;
+}
+
+#AnnotationTool_annotations_only_lbl::after{
+    content: "";
+}
+
+/*Scrollbar*/
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*form*/
+#AnnotationTool_ann_title{
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    border: solid thin #a9a9a9;
+}
+#AnnotationTool_comment {
+    box-sizing: border-box;
+    width: 100%;
+    /*padding: 0;*/
+    text-align: left;
+    padding: 10px;
+    border: solid thin #a9a9a9;
+}
+#AnnotationTool_ok {
+    background: #367ac3;
+    color: white;
+    float: left;
+    text-align: center;
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: solid thin #a9a9a9;
+}
+#AnnotationTool_cancel {
+    background: #b3b3b3;
+    color: white;
+    float:right;
+    width: 25%;
+    padding: 0;
+    text-align: center;
+    border: none;
+}
+.AnnotationTool_buttonsForm {
+    display: flex;
+    margin-top: 20px;
+    height: 50px;
+}
+#AnnotationTool_ok:hover {
+    color: white;
+    background: #1ca10f;
+}
+#AnnotationTool_cancel:hover {
+    background: #8c8c8c;
+}
+
+#AnnotationTool_txtTag {
+    width: 75%;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    border: solid thin #a9a9a9;
+}
+
+#AnnotationTool_btnTag{
+    float: right;
+    width: 20%;
+    padding: 0;
+    text-align: center;
+}
+
+.AnnotationTool_smallField{
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#AnnotationTool_txtTag{
+    width: 75%;
+    text-align: left;
+}
+#AnnotationTool_btnTag{
+    /*padding: 0;*/
+    text-align: center;
+    color: #000000;
+    background-color: #ffffff;
+    float: right;
+    width: 25%;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+
+    border: solid thin #a9a9a9;
+}
+#AnnotationTool_btnTag:hover {
+    color: #ffffff;
+    background-color: #367ac3;
+}
+
+select option[value="opgelost"]{
+    background: #8bc34a;
+}
+select option[value="belangrijk"]{
+    background-color: #fdd835;
+}
+select option[value="info"]{
+    background-color: #1e88e5;
+}
+select option[value="voorbeeld"]{
+    background-color: #f06292;
+}
+
+/*public/private checkbox*/
+#AnnotationTool_access + #AnnotationTool_Visibilityswitch #AnnotationTool_lblAccess_True,
+#AnnotationTool_access:checked + #AnnotationTool_Visibilityswitch #AnnotationTool_lblAccess_False {
+    display: none;
+}
+
+#AnnotationTool_access:checked + #AnnotationTool_Visibilityswitch #AnnotationTool_lblAccess_True,
+#AnnotationTool_access + #AnnotationTool_Visibilityswitch #AnnotationTool_lblAccess_False {
+    display: inline-block;
+}
+
+.AnnotationTool_newAnnotationForm input[type="checkbox"] {
+    display:none;
+}
+
+
+#AnnotationTool_Visibilityswitch .AnnotationTool_switch{
+    text-align: center;
+    float: right;
+    width: 30%;
+    color: #ffffff;
+    background-color: #367ac3;
+    font-weight: normal;
+    font-size: 1em;
+    padding: 5px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#AnnotationTool_Visibilityswitch .AnnotationTool_switch::after{
+    content: "";
+}
+
+/*dropdown category*/
+#AnnotationTool_category{
+    /*width: 60%;*/
+    display: inline-block;
+    float: left;
+    width: 65%;
+    color: #000000;
+    background-color: #ffffff;
+    font-weight: normal;
+    font-size: 1.2em;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border: solid thin #a9a9a9;
+}
+
+#AnnotationTool_select{
+    width: 20%;
+    padding: 0;
+    float: right;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*alert container*/
+#AnnotationTool_alertContainer,#AnnotationTool_historyContainer{
+    /*position: fixed;*/
+    position: absolute;
+    padding: 10px;
+    box-shadow: 0px 0px 20px #8d8d8d;
+    float: right;
+    z-index: 100;
+    background-color: white;
+    right: 30px;
+    top: 20px;
+    width: 400px;
+    word-wrap: break-word;
+}
+.AnnotationTool_alertSection,.AnnotationTool_historySection{
+    text-align: left;
+}
+#AnnotationTool_historyFooter{
+    text-align: center;
+}
+#AnnotationTool_alertTitle,#AnnotationTool_historyTitle{
+    text-align: center;
+}
+#AnnotationTool_alertBtn:hover,#AnnotationTool_historyBtn:hover{
+    cursor: pointer;
+}
+
+
+#AnnotationTool_alertBtnContainer{
+    position: absolute;
+    top: 70px;
+    right: 20px;
+}
+
+/*----------------------------------------------------------------------------
+Language Button*/
+
+#AnnotationTool_languageBtnContainer{
+    position: absolute;
+    top: 70px;
+    right: 60px;
+}
+
+#AnnotationTool_languageBtn{
+    background-color: transparent;
+    color: black;
+    padding: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+#AnnotationTool_languageBtn:hover, AnnotationTool_languageBtn:focus {
+    background-color: #2980B9;
+}
+
+#AnnotationTool_languageDropdown{
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+}
+
+#AnnotationTool_languageDropdown a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+#AnnotationTool_languageDropdown span{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+/*-------------------------------------------------------------------
+historyBtn*/
+
+#AnnotationTool_historyBtnContainer{
+     position: fixed;
+}
+#AnnotationTool_alertFooter,#AnnotationTool_historyFooter{
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*loading animation*/
+#AnnotationTool_loadingAnimContainer{
+    position: fixed;
+    background: #a9a9a9;
+    bottom: 30px;
+    right: 30px;
+    z-index: 500;
+    display: flex;
+}
+
+.AnnotationTool_animationHidden{
+    display: none !important;
+}
+
+#AnnotationTool_loadingIcon{
+    line-height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.AnnotationTool_loadingText{
+    float: right;
+}
+
+.AnnotationTool_loadingAnim{
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*sliders*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+#AnnotationTool_switch{
+    float: right;
+}
+#AnnotationTool_switchLabel{
+    color: #A9A9A9;
+    font-weight: bold;
+    font-size: 25px;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Overview*/
+
+/*bovenste zoekbalk + resultaten*/
+#AnnotationTool_inputsOverview {
+    /*border: medium dashed #ff1a19;*/
+    width: 100%;
+    display: block;
+}
+
+#AnnotationTool_inputsOverview > div{
+    /*border: medium dashed #2a23ff;*/
+    display: inline-block;
+    width: auto;
+}
+
+#AnnotationTool_inputsoverviewdivA {
+    margin-left: 20px;
+}
+
+#AnnotationTool_inputsoverviewdivB {
+    margin-left: 20%;
+    padding: 5px 8px;
+
+    /*Blauwe kleur met ronding*/
+    border-radius: 8px;
+    background: #1e64c8;
+}
+
+#AnnotationTool_inputsoverviewdivC {
+    margin-left: 10px;
+}
+
+#AnnotationTool_searchResults{
+    /*border: medium dashed #ff1a19;*/
+    width: 100%;
+    display: block;
+}
+
+
+/*order*/
+#AnnotationTool_order{
+    padding: 8px 20px;
+    width: 120px;
+    border: none;
+    outline:0;
+
+    /*Blauwe kleur met ronding*/
+    border-radius: 0;
+    color: #f7f9fc;
+    background: #1e64c8;
+
+    /*background: #f7f9fc;*/
+    cursor: pointer;
+}
+
+/*searchbar*/
+#AnnotationTool_searchEverythingId{
+    outline:0;
+    width: 250px;
+
+    /*Blauwe kleur met ronding*/
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: thin #1e64c8 solid;
+    background: #f7f9fc;
+
+    /*
+    background: #f7f9fc;
+    border:none;
+    */
+    cursor: pointer;
+}
+
+/*Checkbox voor zoeken op reacties*/
+#AnnotationTool_inputSearchIncludeReactions + #AnnotationTool_inputSearchIncludeReactionsLabels #AnnotationTool_inputSearchIncludeReactionsSwitchTrue,
+#AnnotationTool_inputSearchIncludeReactions:checked + #AnnotationTool_inputSearchIncludeReactionsLabels #AnnotationTool_inputSearchIncludeReactionsSwitchFalse {
+    display: none;
+}
+
+#AnnotationTool_inputSearchIncludeReactions:checked + #AnnotationTool_inputSearchIncludeReactionsLabels #AnnotationTool_inputSearchIncludeReactionsSwitchTrue,
+#AnnotationTool_inputSearchIncludeReactions + #AnnotationTool_inputSearchIncludeReactionsLabels #AnnotationTool_inputSearchIncludeReactionsSwitchFalse {
+    display: inline-block;
+}
+
+#AnnotationTool_inputsoverviewdivC input[type="checkbox"] {
+    display:none;
+}
+
+#AnnotationTool_inputSearchDiv,
+#AnnotationTool_inputSearchIncludeReactionsSwitchDiv {
+    display: inline-block;
+}
+
+.AnnotationTool_inputSearchIncludeReactionsLabel {
+    width: auto;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+.AnnotationTool_inputSearchIncludeReactionsLabel::after {
+    content: "";
+}
+
+/*Label-eigenschappen*/
+#AnnotationTool_inputSearchIncludeReactionsSwitchTrue {
+    color: #1e64c8;;
+}
+
+#AnnotationTool_inputSearchIncludeReactionsSwitchFalse {
+    color: #7a7a75;
+    font-weight: normal;
+    text-decoration: line-through;
+}
+
+
+
+
+
+
+
+
+.AnnotationTool_searchOverview{
+    cursor: pointer;
+
+}
+#AnnotationTool_searchOverviewContainer{
+    cursor: pointer;
+}

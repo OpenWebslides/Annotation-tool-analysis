@@ -1,0 +1,375 @@
+/* Title and title slide */
+body {
+  padding-top: 30px !important;
+}
+.series {
+  font-size: .6em;
+  color: #737373 !important;
+}
+.caption h1 {
+  line-height: 1.3;
+  margin-bottom: -.25em;
+}
+.title.slide h2 {
+  line-height: 41pt;
+  font-size: 48pt;
+  letter-spacing: -1px;
+  margin: 112px 0 33px -2px;
+  max-width: 600px;
+  line-height: 84px;
+}
+.title.slide .series {
+  line-height: 58px;
+}
+.module:not(:hover),.series:not(:hover) {
+  background-position: 0 2em !important;
+}
+.tweets {
+  position: absolute;
+  top: 555px;
+  right: 60px;
+  font-style: italic;
+}
+.ugent {
+  position: absolute;
+  bottom: 284px;
+  right: -31px;
+  height: 250px;
+}
+.imec {
+  position: absolute;
+  bottom: 218px;
+  right: 9px;
+  height: 146px;
+}
+.idlab {
+  position: absolute;
+  bottom: 153px;
+  right: 51px;
+  height: 76px;
+}
+.list > header .links {
+  font-size: .45em;
+  font-style: italic;
+  margin-top: 1em;
+  line-height: 1.5;
+}
+
+/* General */
+.slide h3 {
+  margin-bottom: 0;
+}
+.slide h3 + dl, .slide h3 + ul {
+  margin-top: 42px;
+}
+ins {
+  color: #cc4320;
+  text-decoration: none;
+}
+abbr {
+  text-decoration: none;
+}
+
+/* License information */
+.slide p.license {
+  font-size: .3em;
+  line-height: 1.5em;
+  width: 370px;
+  position: absolute;
+  bottom: 52px;
+}
+.slide p.license img {
+  display: block;
+  float: left;
+  height: 42px;
+  margin-right: 20px;
+}
+footer p.license img {
+  margin-right: 0 .5em -.15em 0;
+}
+
+/* Content table slides */
+.slide.toc h2 {
+  top: 34px;
+  left: 60px;
+  bottom: auto;
+  right: auto;
+  line-height: 48px;
+  font-style: normal;
+}
+.slide.toc ul {
+  font-style: italic;
+}
+.toc .tweets {
+  position: absolute;
+  bottom: 1px;
+  right: 60px;
+}
+
+/* Code */
+.slide pre {
+  margin-bottom: 38px;
+}
+.slide pre.scroll {
+  max-height: 420px;
+  overflow: scroll;
+}
+
+.element {
+  cursor: pointer;
+}
+.element:hover {
+  color: #453688;
+}
+.element .element:hover {
+  color: #CC4320;
+}
+.element .element .element:hover {
+  color: #737373;
+}
+.element:hover:before {
+  content: 'element';
+  position: absolute;
+  left: 20px;
+  font-family: 'Open Sans';
+  font-style: italic;
+  line-height: 1.6;
+}
+.element .element:before {
+  left: 40px;
+}
+.element .element .element:before {
+  left: 60px;
+}
+.tag {
+  font-weight: bold;
+}
+.tag:hover:before {
+  content: 'tag';
+  position: absolute;
+  font-family: 'Open Sans';
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1;
+  background: rgba(255,255,255,.8);
+  border: 1px solid;
+  padding: 2px 4px 6px;
+  border-radius: 25%;
+  margin: 4px 0 0 14px;
+  box-shadow: 2px 2px currentColor;
+}
+
+/* Lists */
+.inline {
+  line-height: 1.32 !important;
+}
+dl.long {
+  font-size: .8em;
+}
+dl.long dt {
+  min-width: 120px !important;
+}
+dl.long dt, dl.long dd {
+  margin: 0 !important;
+}
+
+/* Forms */
+label {
+  font-weight: bold;
+}
+label:after {
+  content: ": ";
+}
+input {
+  font-family: 'Open Sans';
+  font-size: 28px;
+}
+input[type=text] {
+  border: 1px solid;
+  padding: 0 .5em;
+  border: 1px solid #737373;
+}
+input.small {
+  max-width: 200px;
+}
+.slide form p {
+  margin-bottom: 0;
+}
+
+/* Opinion symbols */
+.opinion:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 1.3em;
+  margin-left: -1.5em;
+  background: url(../images/opinion.svg) no-repeat center center / contain;
+}
+h2.opinion:before {
+  width: 1em;
+  margin: .05em 0 0 -1.15em;
+}
+.label.opinion:before {
+  margin: -1em 0 0 -1em;
+}
+
+/* Images */
+figure:not(.cover) img {
+  display: block;
+  max-width: 100%;
+  max-height: 400px;
+  margin: 0 auto;
+}
+figcaption {
+  display: block;
+  font-size: 10pt;
+  line-height: 1.5 !important;
+  text-align: right;
+}
+.center {
+  display: block;
+  margin: 0 auto;
+}
+img.narrow {
+  margin-left: 60px;
+}
+iframe.image {
+  width: 100%;
+  height: 420px;
+}
+iframe.graph {
+  width: 1024px;
+  height: 492px;
+  margin: -30px -60px;
+  overflow: hidden;
+}
+iframe.query-client, iframe.website {
+  width: 100%;
+  height: 462px;
+}
+
+/* Labels on images */
+.shower .label {
+  position: absolute;
+  display: block;
+  background-color: rgba(255,255,255,.8);
+  border-radius: 15px;
+  color: black;
+  padding: 10px;
+}
+
+/* Full-slide quotes */
+.slide:not(.full) > blockquote:first-child {
+  padding-top: 145px;
+}
+blockquote.long p {
+  margin-bottom: 21px;
+}
+
+/* Tight slides */
+.slide.tight p {
+  margin-bottom: 0px;
+}
+.slide.tight pre {
+  margin-bottom: 38px;
+}
+
+/* Full-screen navigation for touch */
+.handle::before {
+  display: block;
+  content: " ";
+  position: absolute;
+  background: rgba(255, 255, 255, 0);
+  width: 100%;
+  height: 25%;
+  left: 0;
+  bottom: 10%;
+}
+
+/* Tweets */
+.twitter-tweet-rendered {
+  margin: 3em auto !important;
+  transform: scale(1.5) !important;
+}
+
+/* Browser window */
+.browser {
+  background: url(../images/browser.jpg) top center / 100% no-repeat;
+  height: 500px;
+  border-radius: 12px;
+  box-shadow:  5px  5px 10px rgba(0, 0, 0, .4),
+              -2px  5px 10px rgba(0, 0, 0, .4);
+}
+.browser .address-bar {
+  position: relative;
+  top: 59px;
+  left: 116px;
+  font-size: 26px;
+}
+.browser .body {
+  position: relative;
+  top: 83px;
+  height: 400px;
+  text-align: center;
+}
+.browser .body * {
+  margin-left: 0;
+}
+
+/* CSS examples */
+#css-test {
+  font-style: italic;
+  text-align: center;
+  border: 3px solid #453688;
+}
+#css-test span { border: 3px solid #CC4320; }
+#css-test span:last-child { background-color: #737373; }
+
+/* Do and dont's */
+.do, .dont {
+  width: 48%;
+  float: left;
+}
+.dont {
+  margin-right: 4%;
+}
+.do h3 {
+  color: #453688;
+}
+.dont h3 {
+  color: #CC4320;
+}
+.do *, .dont * {
+  margin-left:  0 !important;
+  padding-left: 0 !important;
+}
+.do code {
+  width: auto !important;
+  text-align: left;
+}
+.do .example, .dont .example {
+  min-height: 210px;
+}
+.do ul li, .dont ul li {
+  margin: 0;
+  font-weight: normal;
+  font-style: italic;
+  color: #737373;
+}
+
+/* Queries */
+ol.query > li {
+  min-height: 126px;
+  margin-bottom: 0;
+}
+ol.query .count {
+  float: right;
+  color: #CC4320;
+}
+ol.query em {
+  color: #737373;
+}
+ol.query code {
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
